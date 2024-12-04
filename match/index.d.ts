@@ -6,7 +6,11 @@ export class Match extends preact.Component<RoutableProps, {}> {
 	render(): preact.VNode;
 }
 
-export interface LinkProps extends preact.JSX.HTMLAttributes<HTMLAnchorElement> {
+// Typescript doesn't allow to extends directly from an expression (see
+// https://github.com/microsoft/TypeScript/issues/31843). Assigning to a
+// separate type first makes it work.
+type AnchorElement = preact.JSX.IntrinsicElements['a'];
+export interface LinkProps extends AnchorElement {
 	activeClassName?: string;
 	children?: preact.ComponentChildren;
 }

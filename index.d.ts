@@ -3,7 +3,11 @@ import * as preact from 'preact';
 export function route(url: string, replace?: boolean): boolean;
 export function route(options: { url: string; replace?: boolean }): boolean;
 
-export function exec(url: string, route: string, opts: { default?: boolean }): false | Record<string, string | undefined>;
+export function exec(
+	url: string,
+	route: string,
+	opts: { default?: boolean }
+): false | Record<string, string | undefined>;
 
 export function getCurrentUrl(): string;
 
@@ -69,9 +73,7 @@ export function Route<Props>(
 	props: RouteProps<Props> & Partial<Props>
 ): preact.VNode;
 
-export function Link(
-	props: preact.JSX.HTMLAttributes<HTMLAnchorElement>
-): preact.VNode;
+export function Link(props: preact.JSX.IntrinsicElements['a']): preact.VNode;
 
 export function useRouter<
 	RouteParams extends Record<string, string | undefined> | null = Record<
